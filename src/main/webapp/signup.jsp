@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
-    <head>
+<head>
     <!-- <script type="text/javascript" async="" src="https://analytics.tiktok.com/i18n/pixel/config.js?sdkid=C9TN4GBC77UCFR8RACP0&amp;hostname=www.differ.co.kr"></script><script type="text/javascript" async="" src="https://www.googleadservices.com/pagead/conversion_async.js"></script><script type="text/javascript" async="" src="https://analytics.tiktok.com/i18n/pixel/events.js?sdkid=C9TN4GBC77UCFR8RACP0&amp;lib=ttq"></script><script src="https://connect.facebook.net/signals/config/989032948699175?v=2.9.65&amp;r=stable" async=""></script><script async="" src="https://connect.facebook.net/en_US/fbevents.js"></script><script>
         if (document.location.protocol == 'http:') {
             document.location.href = document.location.href.replace('http:', 'https:');

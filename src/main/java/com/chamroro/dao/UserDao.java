@@ -9,7 +9,7 @@ public static Connection getConnection(){
     Connection con=null;  
     try{  
         Class.forName("com.mysql.jdbc.Driver");  
-        con=DriverManager.getConnection("jdbc:mysql://walab.handong.edu:3306/camp2","camp2","DqYAaFSdSQrTsDf0");  
+        con=DriverManager.getConnection("jdbc:mysql://www.db4free.net:3306/differ?autoReconnect=true&characterEncoding=utf8&useSSL=true&useUnicode=true","chamsae","53elvjelql*");  
     }catch(Exception e){System.out.println(e);}  
     return con;  
 }  
@@ -19,9 +19,12 @@ public static int save(User u){
         Connection con=getConnection();  
         PreparedStatement ps=con.prepareStatement(  
 "insert into Differ_User(nickname,password,email) values(?,?,?)");  
-        ps.setString(1,u.getName());  
+        ps.setString(1,u.getNickname());  
+        System.out.println("nickname:" + u.getNickname());
         ps.setString(2,u.getPassword());  
+        System.out.println("password:" + u.getPassword());
         ps.setString(3,u.getEmail());  
+        System.out.println("email:" + u.getEmail());
         status=ps.executeUpdate();  
     }catch(Exception e){System.out.println(e);}  
     return status;  
@@ -32,7 +35,7 @@ public static int update(User u){
         Connection con=getConnection();  
         PreparedStatement ps=con.prepareStatement(  
 "update Differ_User set nickname=?,password=?,email=? where id=?");  
-        ps.setString(1,u.getName());  
+        ps.setString(1,u.getNickname());  
         ps.setString(2,u.getPassword());  
         ps.setString(3,u.getEmail());  
         ps.setInt(4,u.getId());  
@@ -61,7 +64,7 @@ public static List<User> getAllRecords(){
         while(rs.next()){  
             User u=new User();  
             u.setId(rs.getInt("id"));  
-            u.setName(rs.getString("nickname"));  
+            u.setNickname(rs.getString("nickname"));  
             u.setPassword(rs.getString("password"));  
             u.setEmail(rs.getString("email"));  
             list.add(u);  
@@ -79,7 +82,7 @@ public static User getRecordById(int id){
         while(rs.next()){  
             u=new User();  
             u.setId(rs.getInt("id"));  
-            u.setName(rs.getString("nickname"));  
+            u.setNickname(rs.getString("nickname"));  
             u.setPassword(rs.getString("password"));  
             u.setEmail(rs.getString("email"));  
         }  

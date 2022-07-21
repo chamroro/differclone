@@ -30,7 +30,7 @@
             <div class="member-wrap">
                 <h2 class="en">Login</h2>
                 <form name="login" id="login" action="login-process.php" enctype="multipart/form-data" method="post" data-gtm-form-interact-id="0">
-                                        <input type="hidden" id="type" name="type" value="login">
+                    <input type="hidden" id="type" name="type" value="login">
                     <input type="hidden" id="requestURL" name="requestURL" value="/home/">
                     <input type="hidden" id="token" name="token" value="09f5e60f9883e6f05de83868e3a101767cd55a8854c9216466eab2964268d413">
                     <div class="inp-box">

@@ -36,14 +36,12 @@
         <div class="mh-wrap">
             <div class="member-wrap">
                 <h2 class="en">Join</h2>
-                <form name="join" id="join" action="adduser.jsp" enctype="multipart/form-data" method="post">
-                    <input type="hidden" id="type" name="type" value="join">
-                    <input type="hidden" id="token" name="token" value="aff16857d5825cc123538a613f446a2b8e8fb932b6733b44d0ae252e02124ffe">
-                    <div class="inp-cont">
+                <form name="join" id="join" action="adduser.jsp" method="post">
+               		<div class="inp-cont">
                         <div class="inp-box">
                             <input type="text" name="id_email_f" id="user_id_email_f" placeholder="이메일">
                         </div>
-                        <span>@</span>
+                        <span id="middle">@</span>
                         <div class="inp-box">
                             <select id="user_id_email_b_select">
                                 <option value="0" selected="">이메일 선택</option>
@@ -57,8 +55,9 @@
                                 <option value="kakao.com">kakao.com</option>
                             </select>
                             <input type="text" id="user_id_email_b_input" placeholder="직접입력" style="display: none;">
-                            <input type="hidden" name="email" id="user_id_email_b" value="0">
+                            <input type="hidden" name="id_email_b" id="user_id_email_b" value="0">
                         </div>
+                        <input type="hidden" name="email" id="c" value="0">
                     </div>
                     <div class="inp-box">
                         <input type="text" name="nickname" id="user_nickname" placeholder="닉네임">
@@ -97,9 +96,8 @@
                             </label>
                         </div>
                     </div>
-
                     <div class="btn-box">
-                        <div class="btn-item"><button type="submit" value="Add User" class="fill-btn"><span>가입완료</span></button></div>
+                        <div class="btn-item"><button type="submit" class="fill-btn"><span>가입완료</span></button></div>
                         <div class="btn-item"><a href="javascript:history.back();" class="line-btn"><span>취소</span></a></div>
                     </div>
                 </form>
@@ -497,6 +495,8 @@
                 jQuery('#user_id_email_b').val(jQuery(this).val());
             }
         });
+        
+     
 
         // 전체동의
         var allchk = 0;
@@ -576,6 +576,25 @@
                 jQuery('#user_id_email_b_input').focus();
                 return false;
             }
+            
+            //이메일 합쳐서 db에 넣기
+            $("#user_id_email_f").blur(function(){
+        		email();	
+        	});
+        
+        	$("#user_id_email_b").change(function(){
+        		email();	
+        	});
+
+        	function email() {
+        		const email = $("#user_id_email_f").val();
+        		const middle = $("#middle").text();
+        		const address = $("#user_id_email_b").val();
+        		if(email != "" && address != "") {
+        			$("#totalemail").val(email+middle+address);
+        		}
+        	    console.log(email, address);
+        	};
 
             // 닉네임 체크
             // 2글자 이상 8글자 이하, 국문/영문/숫자 가능, 특수문자 불가능

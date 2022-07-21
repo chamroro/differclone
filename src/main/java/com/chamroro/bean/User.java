@@ -8,10 +8,10 @@ public int getId() {
 public void setId(int id) {
 	this.id = id;
 }
-public String getName() {
+public String getNickname() {
 	return nickname;
 }
-public void setName(String nickname) {
+public void setNickname(String nickname) {
 	this.nickname = nickname;
 }
 public String getPassword() {
