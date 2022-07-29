@@ -6,23 +6,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="resources/css/default.css">
-    <link rel="stylesheet" href="resources/css/style.css">
-    <link rel="shortcut icon" href="resources/img/sun.png" type="image/x-icon">
-    <script id="wp_ts" src="//cdn-aitg.widerplanet.com/js/wp_astg_6.0.js"></script>
+    <link rel="icon" type="image/x-icon" href="https://www.differ.co.kr/favicon.ico">
+    <meta name="description" content="성장을 위한 질문. 저마다의 가능성. we all differ.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="differ">
+    <meta property="og:url" content="https://www.differ.co.kr/">
+    <meta property="og:description" content="성장을 위한 질문. 저마다의 가능성. we all differ.">
+    <meta property="og:image" content="https://www.differ.co.kr/og_img.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="1200">
+    <meta name="twitter:image" content="https://www.differ.co.kr/og_img.png">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/default.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/img/sun.png" type="image/x-icon">
+<!--     <script id="wp_ts" src="//cdn-aitg.widerplanet.com/js/wp_astg_6.0.js"></script> -->
     <title>differ</title>
 </head>
 <body>
     <header class="home-header">
         <div class="header-wrap">
             <button type="button" class="menu-btn en">Menu</button>
-            <h1 class=""><a href="/home/"></a></h1>
-            <a href="login.jsp" class="login-btn en">Login</a>
+            <h1 class=""><a href="${pageContext.request.contextPath}/"></a></h1>
+            <a href="login/login" class="login-btn en">Login</a>
         </div>
         <div class="menu-wrap">
             <div class="menu-dim"></div>
             <button type="button" class="close-btn"><span class="blind">close</span></button>
-            <a href="/home/" class="m-logo"></a>
+            <a href="${pageContext.request.contextPath}/" class="m-logo"></a>
             <div class="m-box">
                 <div class="sub-menu">                    
                     <ol>
@@ -34,10 +44,10 @@
                 </div>
                 <div class="title-menu">
                     <ol>
-                        <li><a href="/article/list/" class="en">Article</a></li>
-                        <li><a href="/toolkit/list/" class="en">Toolkit</a></li>
-                        <li><a href="/event/now/" class="en">Event</a></li>
-                        <li><a href="/about/" class="en">About</a></li>
+                        <li><a href="" class="en">Article</a></li>
+                        <li><a href="" class="en">Toolkit</a></li>
+                        <li><a href="" class="en">Event</a></li>
+                        <li><a href="" class="en">About</a></li>
                     </ol>
                 </div>
             </div>            
@@ -46,15 +56,15 @@
     <div class="fixed-wrap">
         <div class="logo-visual">
             <div class="ani-img">
-                <img class="bg-img" src="resources/img/logo_bg.png" alt style="z-index:1;">
+                <img class="bg-img" src="${pageContext.request.contextPath}/resources/img/logo_bg.png" alt style="z-index:1;">
                 <div class="img-box">
-                    <img src="resources/img/logo_1.svg" alt style="z-index: 1;">
-                    <img src="resources/img/logo_2.svg" alt style="z-index: 0;">
-                    <img src="resources/img/logo_3.svg" alt style="z-index: 0;">
-                    <img src="resources/img/logo_4.svg" alt style="z-index: 0;">
-                    <img src="resources/img/logo_5.svg" alt style="z-index: 0;">
-                    <img src="resources/img/logo_6.svg" alt style="z-index: 0;">
-                    <img src="resources/img/logo_7.svg" alt style="z-index: 0;">
+                    <img src="${pageContext.request.contextPath}/resources/img/logo_1.svg" alt style="z-index: 1;">
+                    <img src="${pageContext.request.contextPath}/resources/img/logo_2.svg" alt style="z-index: 0;">
+                    <img src="${pageContext.request.contextPath}/resources/img/logo_3.svg" alt style="z-index: 0;">
+                    <img src="${pageContext.request.contextPath}/resources/img/logo_4.svg" alt style="z-index: 0;">
+                    <img src="${pageContext.request.contextPath}/resources/img/logo_5.svg" alt style="z-index: 0;">
+                    <img src="${pageContext.request.contextPath}/resources/img/logo_6.svg" alt style="z-index: 0;">
+                    <img src="${pageContext.request.contextPath}/resources/img/logo_7.svg" alt style="z-index: 0;">
                 </div>
             </div>
         </div>
@@ -62,7 +72,7 @@
     <div class="wrap" style="padding-top: 0px;">
         <div class="key-visual">
             <a href="" >
-                <img src="../img/meenoi.png" alt="" class="pc-img">
+                <img src="${pageContext.request.contextPath}/resources/img/meenoi.png" alt="" class="pc-img">
                 <h2>하은이가 그리는 <span class="strokeme"> 성장 </span> 그래프</h2>
                 <h4></h4>
             </a>
@@ -171,17 +181,17 @@
         <div class="bottom-footer">
             <div>
                 <span>상호명: 볼드피리어드</span>
-                <span>사업자등록번호: 650-86-00129</span>
+                <span>사업자등록번호: 비공개</span>
                 <span>주소: 서울특별시 용산구 장문로6길 4, 3층</span>
                 <span>대표자: 김치호</span>
-                <span>마케팅 문의 <a href="mailto:sujeongkim@boldperiod.com">sujeongkim@boldperiod.com</a></span>
+                <span>마케팅 문의 </span>
             </div>
         </div>    
     </footer>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="resources/js/plugin/masonry.layout.js"></script>
-    <script src="resources/js/plugin/slick.min.js"></script>
-    <script src="resources/js/common.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/plugin/masonry.layout.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/plugin/slick.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/common.js"></script>
     <script>
 
     let logoVisual = jQuery('.fixed-wrap').height();

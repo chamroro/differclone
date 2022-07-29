@@ -6,14 +6,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="resources/css/default.css">
-    <link rel="stylesheet" href="resources/css/style.css">
+    <link rel="icon" type="image/x-icon" href="https://www.differ.co.kr/favicon.ico">
+    <meta name="description" content="성장을 위한 질문. 저마다의 가능성. we all differ.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="differ">
+    <meta property="og:url" content="https://www.differ.co.kr/">
+    <meta property="og:description" content="성장을 위한 질문. 저마다의 가능성. we all differ.">
+    <meta property="og:image" content="https://www.differ.co.kr/og_img.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="1200">
+    <meta name="twitter:image" content="https://www.differ.co.kr/og_img.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/default.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
     <!-- <link rel="stylesheet" href="../css/default.css">
     <link rel="stylesheet" href="../css/style.css"> -->
 
    
-    <link rel="shortcut icon" href="resources/img/sun.png" type="image/x-icon">
-    <script id="wp_ts" src="//cdn-aitg.widerplanet.com/js/wp_astg_6.0.js"></script>
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/img/sun.png" type="image/x-icon">
     <title>differ</title>
 
 </head>
@@ -21,7 +31,7 @@
     <header class="top">
         <div class="header-wrap">
             <button type="button" class="menu-btn en">Menu</button>
-            <h1 class=""><a href="/home/"></a></h1>
+            <h1 class=""><a href="${pageContext.request.contextPath}/"></a></h1>
             <a href class="login-btn en">Login</a>
         </div>
     </header>
@@ -29,22 +39,19 @@
         <div class="mh-wrap">
             <div class="member-wrap">
                 <h2 class="en">Login</h2>
-                <form name="login" id="login" action="login-process.php" enctype="multipart/form-data" method="post" data-gtm-form-interact-id="0">
-                    <input type="hidden" id="type" name="type" value="login">
-                    <input type="hidden" id="requestURL" name="requestURL" value="/home/">
-                    <input type="hidden" id="token" name="token" value="09f5e60f9883e6f05de83868e3a101767cd55a8854c9216466eab2964268d413">
+                <form name="login" id="login" action="loginCheck" method="post" >
                     <div class="inp-box">
-                        <input type="text" name="id" id="user_id" placeholder="이메일" data-gtm-form-interact-field-id="0">
+                        <input type="text" name="email" id="user_id" placeholder="이메일">
                     </div>
                     <div class="inp-box">
-                        <input type="password" name="password" id="user_password" placeholder="비밀번호" data-gtm-form-interact-field-id="1">
+                        <input type="password" name="password" id="user_password" placeholder="비밀번호">
                     </div>
                     <div class="sub-txt clear">
                         <a href="../password/" class="right">비밀번호를 잊어버리셨나요?</a>
                     </div>
                     <div class="btn-box">
                         <div class="btn-item"><button type="submit" class="fill-btn"><span>로그인</span></button></div>
-                        <div class="btn-item"><a href="signup.jsp" class="line-btn"><span>회원 가입</span></a></div>                        
+                        <div class="btn-item"><a href="signup" class="line-btn"><span>회원 가입</span></a></div>                        
                     </div>
                 </form>
             </div>
@@ -54,14 +61,14 @@
         <div class="center-footer">
             <div class="left-footer">
                 <p class="en">ⓒ2022 differ Media</p>
-                <a href="/member/terms/" class="en">Terms of Use</a>
-                <a href="/member/privacy/" class="en">Privacy Policy</a>
+                <a href="" class="en">Terms of Use</a>
+                <a href="" class="en">Privacy Policy</a>
             </div>
             <div class="right-footer">
-                <a href="https://www.instagram.com/differ.official/" class="en" target="_blank">Instagram</a>
-                <a href="https://www.youtube.com/channel/UCjVuekEBQGDmRy9iOjVGDzA" class="en" target="_blank">Youtube</a>
-                <a href="https://brunch.co.kr/@differofficial" class="en" target="_blank">Brunch</a>
-                <a href="https://www.desker.co.kr/" class="en" target="_blank">DESKER</a>
+                <a href="" class="en" target="_blank">Instagram</a>
+                <a href="" class="en" target="_blank">Youtube</a>
+                <a href="" class="en" target="_blank">Brunch</a>
+                <a href="" class="en" target="_blank">DESKER</a>
             </div>
         </div>
         <div class="float-footer clear">
@@ -75,12 +82,12 @@
                 <span>사업자등록번호: 650-86-00129</span>
                 <span>주소: 서울특별시 용산구 장문로6길 4, 3층</span>
                 <span>대표자: 김치호</span>
-                <span>마케팅 문의 <a href="mailto:sujeongkim@boldperiod.com">sujeongkim@boldperiod.com</a></span>
+                <span>마케팅 문의</span>
             </div>
         </div>    
     </footer>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="resources/js/common.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/common.js"></script>
     <script>
         //아이디, 비밀번호 입력 체크
         jQuery('#login').submit(function(){

@@ -1,16 +1,40 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="https://www.differ.co.kr/favicon.ico">
+    <meta name="description" content="성장을 위한 질문. 저마다의 가능성. we all differ.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="differ">
+    <meta property="og:url" content="https://www.differ.co.kr/">
+    <meta property="og:description" content="성장을 위한 질문. 저마다의 가능성. we all differ.">
+    <meta property="og:image" content="https://www.differ.co.kr/og_img.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="1200">
+    <meta name="twitter:image" content="https://www.differ.co.kr/og_img.png">
+    <title>회원가입 - differ</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/default.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
+	
+ <body style="">
+	
     <!-- s: header -->
     <header class="top">
         <div class="header-wrap">
             <button type="button" class="menu-btn en">Menu</button>
-            <h1><a href="/home/"></a></h1>
-                        <a href="/member/login/?url=/member/join/" class="login-btn en">Login</a>
+            <h1><a href="${pageContext.request.contextPath}/"></a></h1>
+                        <a href="/login/login" class="login-btn en">Login</a>
                     </div>
 
         <div class="menu-wrap">
             <div class="menu-dim"></div>
             <button type="button" class="close-btn"><span class="blind">close</span></button>
-            <a href="/home/" class="m-logo"></a>
+            <a href="${pageContext.request.contextPath}/" class="m-logo"></a>
             <div class="m-box">
                 <div class="sub-menu">                    
                     <ol>
@@ -36,7 +60,7 @@
         <div class="mh-wrap">
             <div class="member-wrap">
                 <h2 class="en">Join</h2>
-                <form name="join" id="join" action="adduser.jsp" method="post">
+                <form name="join" id="join" action="save" method="post">
                		<div class="inp-cont">
                         <div class="inp-box">
                             <input type="text" name="id_email_f" id="user_id_email_f" placeholder="이메일">
@@ -55,9 +79,10 @@
                                 <option value="kakao.com">kakao.com</option>
                             </select>
                             <input type="text" id="user_id_email_b_input" placeholder="직접입력" style="display: none;">
+                           <!--  <input type="hidden" name="id_email_b" id="user_id_email_b" value="0"> -->
                             <input type="hidden" name="id_email_b" id="user_id_email_b" value="0">
                         </div>
-                        <input type="hidden" name="email" id="c" value="0">
+                        <input type="hidden" name="email" id="totalemail" value="0">
                     </div>
                     <div class="inp-box">
                         <input type="text" name="nickname" id="user_nickname" placeholder="닉네임">
@@ -110,14 +135,14 @@
         <div class="center-footer">
             <div class="left-footer">
                 <p class="en">ⓒ2022 differ Media</p>
-                <a href="/member/terms/" class="en">Terms of Use</a>
-                <a href="/member/privacy/" class="en">Privacy Policy</a>
+                <a href="" class="en">Terms of Use</a>
+                <a href="/" class="en">Privacy Policy</a>
             </div>
             <div class="right-footer">
-                <a href="https://www.instagram.com/differ.official/" class="en" target="_blank">Instagram</a>
-                <a href="https://www.youtube.com/channel/UCjVuekEBQGDmRy9iOjVGDzA" class="en" target="_blank">Youtube</a>
-                <a href="https://brunch.co.kr/@differofficial" class="en" target="_blank">Brunch</a>
-                <a href="https://www.desker.co.kr/" class="en" target="_blank">DESKER</a>
+                <a href="" class="en" target="_blank">Instagram</a>
+                <a href="" class="en" target="_blank">Youtube</a>
+                <a href="" class="en" target="_blank">Brunch</a>
+                <a href="" class="en" target="_blank">DESKER</a>
             </div>
         </div>
         <div class="float-footer clear">
@@ -131,7 +156,7 @@
                 <span>사업자등록번호: 650-86-00129</span>
                 <span>주소: 서울특별시 용산구 장문로6길 4, 3층</span>
                 <span>대표자: 김치호</span>
-                <span>마케팅 문의 <a href="mailto:sujeongkim@boldperiod.com">sujeongkim@boldperiod.com</a></span>
+                <span>마케팅 문의 </span>
             </div>
         </div>    
     </footer>
@@ -469,7 +494,7 @@
     <div class="dim"></div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="resources/js/common.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/common.js"></script>
     <script>
         $(document).ready(function(){
             //한글 입력 방지, 대문자 -> 소문자로 변환
@@ -577,24 +602,16 @@
                 return false;
             }
             
-            //이메일 합쳐서 db에 넣기
-            $("#user_id_email_f").blur(function(){
-        		email();	
-        	});
+     
+       		const email = $("#user_id_email_f").val();
+       		const middle = $("#middle").text();
+       		const address = $("#user_id_email_b").val();
+       		
+       		if(email != "" && address != "") {
+       			$("#totalemail").val(email+middle+address);
+       		}
         
-        	$("#user_id_email_b").change(function(){
-        		email();	
-        	});
-
-        	function email() {
-        		const email = $("#user_id_email_f").val();
-        		const middle = $("#middle").text();
-        		const address = $("#user_id_email_b").val();
-        		if(email != "" && address != "") {
-        			$("#totalemail").val(email+middle+address);
-        		}
-        	    console.log(email, address);
-        	};
+        	console.log(email, address);
 
             // 닉네임 체크
             // 2글자 이상 8글자 이하, 국문/영문/숫자 가능, 특수문자 불가능
@@ -705,5 +722,5 @@
     </script>
 
 
-<img src="https://t.co/i/adsct?bci=1&amp;eci=1&amp;event_id=ae637427-13d1-4cdc-882d-ebb073bf5ffc&amp;p_id=Twitter&amp;p_user_id=0&amp;pl_id=df4627ba-7236-4677-bf27-c8aa858965d5&amp;tw_document_href=https%3A%2F%2Fwww.differ.co.kr%2Fmember%2Fjoin%2F&amp;tw_iframe_status=0&amp;tw_order_quantity=0&amp;tw_sale_amount=0&amp;txn_id=o8s2r&amp;type=javascript&amp;version=2.3.23" height="1" width="1" style="display: none;">
-<img src="https://analytics.twitter.com/i/adsct?bci=1&amp;eci=1&amp;event_id=ae637427-13d1-4cdc-882d-ebb073bf5ffc&amp;p_id=Twitter&amp;p_user_id=0&amp;pl_id=df4627ba-7236-4677-bf27-c8aa858965d5&amp;tw_document_href=https%3A%2F%2Fwww.differ.co.kr%2Fmember%2Fjoin%2F&amp;tw_iframe_status=0&amp;tw_order_quantity=0&amp;tw_sale_amount=0&amp;txn_id=o8s2r&amp;type=javascript&amp;version=2.3.23" height="1" width="1" style="display: none;">
+</body>
+</html>

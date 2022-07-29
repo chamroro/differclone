@@ -1,3 +1,0 @@
-# differclone
-
-Clone coding

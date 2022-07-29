@@ -1,92 +1,48 @@
-package com.chamroro.dao;  
-import java.sql.*;  
-import java.util.ArrayList;  
-import java.util.List;  
-import com.chamroro.bean.User;  
+package com.chamroro.dao;   
+import java.sql.ResultSet;    
+import java.sql.SQLException;    
+import java.util.List;
+
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;    
+import org.springframework.jdbc.core.JdbcTemplate;    
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
+
+import com.chamroro.bean.User;    
+
+@Repository
 public class UserDao {  
-  
-public static Connection getConnection(){  
-    Connection con=null;  
-    try{  
-        Class.forName("com.mysql.jdbc.Driver");  
-        con=DriverManager.getConnection("jdbc:mysql://www.db4free.net:3306/differ?autoReconnect=true&characterEncoding=utf8&useSSL=true&useUnicode=true","chamsae","53elvjelql*");  
-    }catch(Exception e){System.out.println(e);}  
-    return con;  
-}  
-public static int save(User u){  
-    int status=0;  
-    try{  
-        Connection con=getConnection();  
-        PreparedStatement ps=con.prepareStatement(  
-"insert into Differ_User(nickname,password,email) values(?,?,?)");  
-        ps.setString(1,u.getNickname());  
-        System.out.println("nickname:" + u.getNickname());
-        ps.setString(2,u.getPassword());  
-        System.out.println("password:" + u.getPassword());
-        ps.setString(3,u.getEmail());  
-        System.out.println("email:" + u.getEmail());
-        status=ps.executeUpdate();  
-    }catch(Exception e){System.out.println(e);}  
-    return status;  
-}  
-public static int update(User u){  
-    int status=0;  
-    try{  
-        Connection con=getConnection();  
-        PreparedStatement ps=con.prepareStatement(  
-"update Differ_User set nickname=?,password=?,email=? where id=?");  
-        ps.setString(1,u.getNickname());  
-        ps.setString(2,u.getPassword());  
-        ps.setString(3,u.getEmail());  
-        ps.setInt(4,u.getId());  
-        status=ps.executeUpdate();  
-    }catch(Exception e){System.out.println(e);}  
-    return status;  
-}  
-public static int delete(User u){  
-    int status=0;  
-    try{  
-        Connection con=getConnection();  
-        PreparedStatement ps=con.prepareStatement("delete from Differ_User where id=?");  
-        ps.setInt(1,u.getId());  
-        status=ps.executeUpdate();  
-    }catch(Exception e){System.out.println(e);}  
-  
-    return status;  
-}  
-public static List<User> getAllRecords(){  
-    List<User> list=new ArrayList<User>();  
-      
-    try{  
-        Connection con=getConnection();  
-        PreparedStatement ps=con.prepareStatement("select * from Differ_User");  
-        ResultSet rs=ps.executeQuery();  
-        while(rs.next()){  
-            User u=new User();  
-            u.setId(rs.getInt("id"));  
-            u.setNickname(rs.getString("nickname"));  
-            u.setPassword(rs.getString("password"));  
-            u.setEmail(rs.getString("email"));  
-            list.add(u);  
-        }  
-    }catch(Exception e){System.out.println(e);}  
-    return list;  
-}  
-public static User getRecordById(int id){  
-    User u=null;  
-    try{  
-        Connection con=getConnection();  
-        PreparedStatement ps=con.prepareStatement("select * from Differ_User where id=?");  
-        ps.setInt(1,id);  
-        ResultSet rs=ps.executeQuery();  
-        while(rs.next()){  
-            u=new User();  
-            u.setId(rs.getInt("id"));  
-            u.setNickname(rs.getString("nickname"));  
-            u.setPassword(rs.getString("password"));  
-            u.setEmail(rs.getString("email"));  
-        }  
-    }catch(Exception e){System.out.println(e);}  
-    return u;  
-}  
+		
+	@Autowired
+	SqlSessionTemplate sqlSession;
+	    
+	public void setTemplate(SqlSessionTemplate sqlSession) {    
+	    this.sqlSession = sqlSession;    
+	}    
+
+	
+	public void insertUser(User vo) {
+		sqlSession.insert("User.insertUser", vo);
+	}
+	
+	public User getUser(User vo) {
+		return sqlSession.selectOne("User.getUser", vo);
+	}
+
+//	public List<Emp> getEmployees(){    
+//	    return template.query("select * from Emp99",new RowMapper<Emp>(){    
+//	        public Emp mapRow(ResultSet rs, int row) throws SQLException {    
+//	            Emp e=new Emp();    
+//	            e.setId(rs.getInt(1));    
+//	            e.setName(rs.getString(2));    
+//	            e.setSalary(rs.getFloat(3));    
+//	            e.setDesignation(rs.getString(4));    
+//	            return e;    
+//	        }    
+//	    });    
+//	}    
+//	}  
+	
 }  
